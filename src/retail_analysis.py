@@ -19,6 +19,7 @@ def main(args):
         video_file=args.video
 
     try:
+        date = input('Please Enter the date in [year-month-day] format :')
         count = people_counter(model, device, video_file)
         total_count = count.people_count()
         
@@ -27,23 +28,23 @@ def main(args):
         conversion_rate = trans/customer_traffic
         
         if os.path.isfile('retail_analytics.csv')  == False:
-            data = {'customer_traffic': customer_traffic, 'trans' : trans, 'conversion_rate' : conversion_rate}
+            data = {'Date': date, 'customer_traffic': customer_traffic, 'total_transactions' : trans, 'conversion_rate' : conversion_rate}
             df = pd.DataFrame(data = data, index = [0])
             df.to_csv('retail_analytics.csv', encoding='utf-8', index=False)
 
         else:
-            data = {'customer_traffic': customer_traffic, 'trans' : trans, 'conversion_rate' : conversion_rate}
+            data = {'Date': date, 'customer_traffic': customer_traffic, 'total_transactions' : trans, 'conversion_rate' : conversion_rate}
             df = pd.read_csv('retail_analytics.csv')
             df = df.append(data, ignore_index=True)
             df.to_csv('retail_analytics.csv', encoding='utf-8', index=False)
 
         
-        if conversion_rate >= 0.1:
+        if conversion_rate >= 0.03:
             print('\nYour store has earned a good conversion rate of '+ str(conversion_rate)+'. Keep it up!')
         if len(df) > 1 and conversion_rate > np.mean(df['conversion_rate']):
             print('The performance of your store has increased when compared with its previous conversion rates.')
-        elif conversion_rate < 0.1:
-            print('\nYou have to improve your store performance. Try taking the feedback of customers to improve it.')
+        elif conversion_rate < 0.03:
+            print('\nYou have to improve your store performance. Please take the feedback from customers to improve it.')
 
         if len(df) > 1:
             df['conversion_rate'].plot()
