@@ -10,7 +10,7 @@ class people_counter:
 
     Args:
     model: path of the model to detect humans.
-    device: cpu,gpu,vpu. This is used to specify the device to perform
+    device: CPU,GPU,VPU,FPGA. This is used to specify the device to perform
     inference on the model.
     video_file: cam or video. This is to specify the source, default = 'cam'.
 
