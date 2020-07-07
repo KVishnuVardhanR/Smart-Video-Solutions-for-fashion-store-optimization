@@ -5,6 +5,18 @@ import logging as log
 
 
 class people_counter:
+    """
+    This module is used to count number of people
+
+    Args:
+    model: path of the model to detect humans.
+    device: cpu,gpu,vpu. This is used to specify the device to perform
+    inference on the model.
+    video_file: cam or video. This is to specify the source, default = 'cam'.
+
+    Returns:
+    total count of the people.
+    """
     def __init__(self, model, device, video_file):
         self.person_detect = PersonDetect(model, device, threshold = 0.5)
         self.person_detect.load_model()
@@ -32,12 +44,16 @@ class people_counter:
             ret, frame=cap.read()
             if not ret:
                 break
-                
-            image, count = self.person_detect.predict(frame)
+
+            # send input frame to person_detect model to detect humans and count    
+            image, count = self.person_detect.predict(frame) 
+
+            # When new person enters the video
             if count > self.last_count:
                 self.start_time = time.time()
                 self.total_count = self.total_count + count - self.last_count
 
+            # Person duration in the video is calculated
             if count < self.last_count:
                 duration = int(time.time() - self.start_time)
 

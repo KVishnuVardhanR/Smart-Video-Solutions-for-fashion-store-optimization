@@ -23,10 +23,12 @@ def main(args):
         count = people_counter(model, device, video_file)
         total_count = count.people_count()
         
+        # calculate conversion rate  
         trans = int(input('\nEnter total number of transactions hppened today : '))
         customer_traffic = total_count//2
         conversion_rate = trans/customer_traffic
-        
+
+        # Checking whether retail_analytics file is present or not
         if os.path.isfile('retail_analytics.csv')  == False:
             data = {'Date': date, 'customer_traffic': customer_traffic, 'total_transactions' : trans, 'conversion_rate' : conversion_rate}
             df = pd.DataFrame(data = data, index = [0])
@@ -38,7 +40,7 @@ def main(args):
             df = df.append(data, ignore_index=True)
             df.to_csv('retail_analytics.csv', encoding='utf-8', index=False)
 
-        
+        #Output the performance of the store by the end of the day. 
         if conversion_rate >= 0.03:
             print('\nYour store has earned a good conversion rate of '+ str(conversion_rate)+'. Keep it up!')
         if len(df) > 1 and conversion_rate > np.mean(df['conversion_rate']):

@@ -1,1 +1,1 @@
-# Visual Video Solutions using Edge AI for Retail Analytics
+# Smart Video Solutions for Fashion Store Optimization
