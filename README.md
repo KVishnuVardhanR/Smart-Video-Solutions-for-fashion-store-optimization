@@ -54,7 +54,7 @@ insights for fashion optimization with a very minimum hardware requirements.
   
 # Next Steps
 - After successful completion of running the program, you can download Tableau Software for data visualisation of the retail_analysis.csv file.  
-- For Further details, please check out the ```smart Video Solutions using Edge AI for fashion.pptx``` presentation on what we can do more.
+- For Further details, please check out the ```smart Video Solutions using Edge AI for fashion.pptx``` presentation in the resources section on what we can do more.
 
 
 # References
