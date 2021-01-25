@@ -9,7 +9,8 @@ import logging as log
 
 
 def main(args):
-    model=args.model
+    #model=args.model
+    model='person_detect_model\person-detection-retail-0013'
     device=args.device
     threshold=args.threshold
     
@@ -24,7 +25,7 @@ def main(args):
         total_count = count.people_count()
         
         # calculate conversion rate  
-        trans = int(input('\nEnter total number of transactions hppened today : '))
+        trans = int(input('\nEnter total number of transactions happened today : '))
         customer_traffic = total_count//2
         conversion_rate = trans/customer_traffic
 
@@ -58,8 +59,8 @@ def main(args):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--model', required=True,
-                        help = "Path to xml file of Person Detection model.")
+    #parser.add_argument('--model', required=True,
+    #                    help = "Path to xml file of Person Detection model.")
     
     parser.add_argument('--device', default='CPU',
                         help = "specifying device like CPU, GPU, VPU, FPGA to run inference.")
