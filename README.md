@@ -42,7 +42,7 @@ insights for fashion optimization with a very minimum hardware requirements.
   - type ```setupvars.bat``` command and press *Enter* to initialize OpenVINO environment.
 - Next, ```cd``` to the project directory:
 - Now, run the following command to run the application:
-  - ```python src\main.py  --video resources\Pedestrian_Detect.avi --device CPU --model person_detect_model\person-detection-retail-0013```
+  - ```python src\main.py  --video resources\Pedestrian_Detect.avi --device CPU ```
 - After successful completion of the program, you'll be able to see **retail_analysis.csv** in your project directory.     
 
  
